@@ -80,13 +80,42 @@ let playerCount = 0;
 function createPlayer() {
     if (playerCount < 3) {
         const player = document.createElement("div");
-        player.classList.add("player");
+        player.classList.add("player_container");
+
         player.id = `p${playerCount + 1}`;
         player.textContent = `P ${playerCount + 1}`;
+        
+        if (playerCount == 1) {
+            player.style.top = "20px";
+        }
+        if (playerCount == 2) {
+            player.style.top = "40px";
+        }  
+        
+        const selectPlayer = player;
+        const playerHead = document.createElement("div");
+        const playerShowder = document.createElement("div");
+        const playerBody = document.createElement("div");
+        const playerBase = document.createElement("div");
+        
+        playerHead.classList.add("head");
+        playerShowder.classList.add('showder');
+        playerBody.classList.add('body');
+        playerBase.classList.add('base');
+        
+        selectPlayer.appendChild(playerHead);
+        selectPlayer.appendChild(playerShowder);  
+        selectPlayer.appendChild(playerBody);
+        selectPlayer.appendChild(playerBase);
+     
         
         // สุ่มสี
         const randomColor = getRandomColor();
         player.style.backgroundColor = randomColor;
+        playerHead.style.backgroundColor = randomColor;
+        playerShowder.style.backgroundColor = randomColor;
+        playerBody.style.backgroundColor = randomColor; 
+        playerBase.style.backgroundColor = randomColor; 
 
         // ตำแหน่งเริ่มต้นที่ 0
         const startPosition = document.querySelector(".start");
