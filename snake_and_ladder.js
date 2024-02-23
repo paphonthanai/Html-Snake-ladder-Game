@@ -84,12 +84,18 @@ function createPlayer() {
 
         player.id = `p${playerCount + 1}`;
         player.textContent = `P ${playerCount + 1}`;
-        
+
+        if (playerCount == 0) {
+            player.style.left = "-15px";
+            player.style.top = "-15px";
+        }
         if (playerCount == 1) {
-            player.style.top = "20px";
+            player.style.left = "5px";
+            player.style.top = "-15px";
         }
         if (playerCount == 2) {
-            player.style.top = "40px";
+            player.style.left = "-7px";
+            player.style.top = "-5px";
         }  
         
         const selectPlayer = player;
@@ -111,12 +117,12 @@ function createPlayer() {
         
         // สุ่มสี
         const randomColor = getRandomColor();
-        player.style.backgroundColor = randomColor;
+        player.style.backgroundColor = "transpareant";
         playerHead.style.backgroundColor = randomColor;
         playerShowder.style.backgroundColor = randomColor;
         playerBody.style.backgroundColor = randomColor; 
         playerBase.style.backgroundColor = randomColor; 
-
+        player.style.color = "#fff";
         // ตำแหน่งเริ่มต้นที่ 0
         const startPosition = document.querySelector(".start");
         startPosition.appendChild(player);
@@ -136,7 +142,9 @@ function getRandomColor() {
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    return color;
+    if (color != "#42d113") {
+        return color;
+    }
 }
 
 
